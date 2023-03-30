@@ -1,0 +1,13 @@
+<section class="expense">
+  <h3>Expenses</h3>
+  <ul class="expenses">
+    <% @expenses.each do |e| %>
+      <li>
+        <%= e.date %> &bull;
+        <%= number_to_currency(e.amount) %> &bull;
+        <%= e.description %> &bull;
+        Categorized under <%= link_to e.category.name, e.category %>
+      </li>
+    <% end %>
+  </ul>  
+</section>

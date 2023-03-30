@@ -1,0 +1,18 @@
+<%= form_with(model: model) do |f| %>
+
+  <%= render "shared/errors", object: expense %>
+  
+  <%= f.label :amount %>
+  <%= f.number_field :amount, step: 0.01 %>
+
+  <%= f.label :date %>
+  <%= f.date_select :date %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, rows: 2 %>
+  
+  <%= f.label :category %>
+  <%= f.select :category, category_names, selected: @category.name %>
+
+  <%= f.submit %>
+<% end %>

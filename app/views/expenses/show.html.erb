@@ -1,0 +1,12 @@
+<section class="expense">
+  <p><%= @expense.date %><p>
+  <p><%= number_to_currency(@expense.amount) %></p>
+  <p><%= @expense.description %></p>
+  <p>Classified as a <%= @expense.category.name %> expense</p>
+</section>
+
+</section>
+  <p><%= link_to "Edit", edit_category_expense_path(@expense.category, @expense) %></p>
+  <p><%= link_to "Delete", category_expense_path(@expense.category, @expense),
+           data: { turbo_method: :delete, turbo_confirm: "Really?!" } %></p>
+</section>

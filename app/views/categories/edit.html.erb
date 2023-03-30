@@ -1,0 +1,8 @@
+<section class="category">
+  <h1>Editing <%= @category.name %> Category</h1>
+  
+  <%= render "form", category: @category %>
+  
+  <p><%= link_to "Delete Category", category_path(@category), 
+        data: { turbo_method: :delete, turbo_confirm: "Really?!" } %></p>
+</section>

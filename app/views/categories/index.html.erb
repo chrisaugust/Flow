@@ -1,0 +1,33 @@
+<section class="category">
+
+  <% if current_user %>
+    <h1>Spending Overview</h1>
+  <% else %>
+    <h1>Visualize your 💵 Flow!</h1>
+    <h2>Track and categorize your expenses!</h2>
+    <hr>
+    <h3>Spending Overview for All Users</h3>
+  <% end %>
+  
+  <%= render "chart" %>
+ 
+  <h2>Categories</h2> 
+  <ul> 
+    <% @categories.each do |cat| %>
+      <% if @total_spending > 0 %>
+        <li>
+          <strong>
+            <%= show_as_percentage(@totals_by_category[cat], @total_spending) %>%
+          </strong>
+          &bull; <%= link_to cat.name, category_path(cat) %>
+          &bull; <%= number_to_currency(@totals_by_category[cat]) %>
+        </li>
+      <% else %>
+        <li><%= link_to cat.name, category_path(cat) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <p><strong>Total: <%= number_to_currency(@total_spending) %></strong></p>
+  
+  <p><%= link_to "New Category", new_category_path %></p>
+</section>
