@@ -7,16 +7,34 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 Category.create!([
-{ name: "Food", budget: 400 },
-{ name: "Housing", budget: 500 },
-{ name: "Transportation", budget: 100 },
-{ name: "Phone", budget: 80 },
-{ name: "Education", budget: 200 },
-{ name: "Household", budget: 50 },
-{ name: "Clothes", budget: 25 },
-{ name: "Books", budget: 80 },
-{ name: "Eating Out", budget: 100 },
-{ name: "Entertainment", budget: 25 },
-{ name: "Credit Cards", budget: 100 },
-{ name: "Loan Payments", budget: 100 }
+{ name: "Food",
+    description: "Groceries, eating out, snacks..." },
+{ name: "Housing" },
+{ name: "Transportation" },
+{ name: "Essential Bills",
+    description: "Utilities, phone, internet, etc." },
+{ name: "Health/Medical" },
+{ name: "Insurance" },
+{ name: "Personal Care",
+    description: "Personal hygiene products, clothes/shoes,
+    haircuts, etc." },
+{ name: "Children" },
+{ name: "Pets" },
+{ name: "Savings" },
+{ name: "Debt" },
+{ name: "Education/Personal Development" },
+{ name: "Entertainment",
+    description: "Going out with friends, movies, subscriptions, memberships,
+    music events, hobbies..." },
+{ name: "Gifts" },
+{ name: "Vices",
+    description: "Caffeine, Nicotine, Alcohol, and dare I say... Drugs!" }
+])
+
+User.create!([
+{ name: "admin",
+  email: "admin@example.com",
+  password: "secret",
+  password_confirmation: "secret",
+  admin: true }
 ])
