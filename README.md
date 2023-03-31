@@ -12,7 +12,7 @@ You can find the deployed app [here](https://young-sea-87737.herokuapp.com). You
 ## To run on your local machine
 You'll need to have ruby (3.2.1) and Rails (7.0.4.3) installed. 
 Clone the repo with `$ git clone https://github.com/chrisaugust/Flow.git flow`.
-Hop into the directory with `$ cd flow`, run `$ bundle install`.
+Hop into the directory with `$ cd flow`, run `$ bundle config set --local without 'production'` (prevents bundler from installing the production gems), and then `$ bundle install`.
 Set up the database with `$ rails db:migrate`.
 
 At this point you should check out the 'seeds.rb' file in the 'flow/db' directory. It will create some basic categories and a generic admin user. Leave as is or modify as you see fit.
