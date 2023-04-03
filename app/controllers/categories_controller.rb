@@ -63,6 +63,9 @@ class CategoriesController < ApplicationController
 
     @total_spending = total(@expenses)
 
+    @spending_by_date = @expenses.group_by(&:date).
+      transform_values { |expenses| expenses.sum(&:amount) }
+
     @chart_data = @expenses.map { |e| e.date }.zip(@expenses.map { |e| e.amount })
   end
 
