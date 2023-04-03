@@ -66,7 +66,7 @@ class CategoriesController < ApplicationController
     @spending_by_date = @expenses.group_by(&:date).
       transform_values { |expenses| expenses.sum(&:amount) }
 
-    @chart_data = @expenses.map { |e| e.date }.zip(@expenses.map { |e| e.amount })
+    @chart_data = @spending_by_date
   end
 
   def new
