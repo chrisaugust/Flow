@@ -3,12 +3,13 @@
   <h2>Track and categorize your expenses!</h2>
   <hr>
  
-  <h2>All Categories</h2> 
+  <h2>Pick an existing category to add an expense</h2> 
   <ul> 
     <% @categories.each do |cat| %>
       <li>
         <%= link_to cat.name, category_path(cat) %>
       </li>
     <% end %>
-  </ul>
+  </ul>  
+  <p><%= link_to "New Category", new_category_path %></p>
 </section>
