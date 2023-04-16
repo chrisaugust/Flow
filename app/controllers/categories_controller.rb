@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
       @expenses = Expense.all
     end
 
-    @categories = current_user.categories 
+    @categories = current_user.categories.uniq
 
     @totals_by_category = @categories.each_with_object({}) { |cat, hash| hash[cat] = 0 }
     @expenses.each { |e| @totals_by_category[e.category] += e.amount }
@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
   def current_month
     if current_user 
       @expenses = Expense.current_month_for(current_user)
-      @categories = current_user.categories
+      @categories = current_user.categories.uniq
     else
       @expenses = Expense.current_month
       @categories = Category.all
