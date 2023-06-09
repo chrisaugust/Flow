@@ -1,0 +1,5 @@
+<ul>Past 3 Months</ul>
+  <% @months.each do |month_year| %>
+    <li><%= link_to month_year, single_month_path(month_year, current_user.id) %></li>
+  <% end %>
+</ul>

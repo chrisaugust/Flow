@@ -52,6 +52,33 @@ class CategoriesController < ApplicationController
     @chart_data = @categories.map { |cat| cat.name }.zip(@totals_by_category.values)   
   end
 
+  def past_months
+    if current_user
+      @months = Expense.past_three_months_for(current_user)
+    else
+      redirect_to new_session_url
+    end
+  end
+
+  def single_month
+    month_year = params["format"]
+    @month, @year = month_year.split('-')
+
+    if current_user 
+      @expenses = Expense.expenses_for(month_year, current_user)
+      @categories = current_user.categories.uniq
+    else
+      redirect_to new_session_url
+    end 
+
+    @totals_by_category = @categories.each_with_object({}) { |cat, hash| hash[cat] = 0 } 
+    @expenses.each { |e| @totals_by_category[e.category] += e.amount }
+
+    @total_spending = total(@expenses)
+
+    @chart_data = @categories.map { |cat| cat.name }.zip(@totals_by_category.values)   
+  end
+
   def show
     @category = Category.find(params[:id])
 

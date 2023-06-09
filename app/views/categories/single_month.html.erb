@@ -1,0 +1,32 @@
+<section class="category">
+
+<h1>Spending for <%= @month %>/<%= @year %></h1>
+  
+  <%= render "chart" %>
+ 
+  <h2>Categories</h2> 
+  <ul> 
+    <% @categories.each do |cat| %>
+      <% if @total_spending > 0 %>
+        <li>
+          <strong>
+            <%= show_as_percentage(@totals_by_category[cat], @total_spending) %>%
+          </strong>
+          &bull; <%= link_to cat.name, category_path(cat) %>: 
+          &bull; <%= number_to_currency(@totals_by_category[cat]) %>
+        </li>
+      <% else %>
+        <li><%= link_to cat.name, category_path(cat) %>: 
+            <%= number_to_currency(@totals_by_category[cat]) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <p><strong>Total: <%= number_to_currency(@total_spending) %></strong></p>
+  
+  <% if current_user_admin? %>  
+    <section class="admin">
+      <p><%= link_to "New Category", new_category_path %></p>
+    </section>
+  <% end %>
+</section>
