@@ -16,7 +16,8 @@ class Expense < ApplicationRecord
     this_month = Date.today.strftime('%m-%Y')
     last_month = Date.today.prev_month.strftime('%m-%Y')
     previous_month = Date.today.prev_month.prev_month.strftime('%m-%Y')
-    months = [this_month, last_month, previous_month]
+    previous_previous = Date.today.prev_month.prev_month.prev_month.strftime('%m-%Y')
+    months = [last_month, previous_month, previous_previous]
   end
 
   def self.current_month_for(user_id)
