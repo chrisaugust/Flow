@@ -83,9 +83,9 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     if current_user
-      @expenses = @category.expenses.order(:date).filter { |e| e.user == current_user }
+      @expenses = @category.expenses.order(date: :desc).filter { |e| e.user == current_user }
     else
-      @expenses = @category.expenses.order(:date)
+      @expenses = @category.expenses.order(date: :desc)
     end
 
     @total_spending = total(@expenses)

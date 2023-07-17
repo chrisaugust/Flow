@@ -8,6 +8,7 @@
   <p><%= @category.description %></p>
   <hr>
   <h2>Expenses</h2>
+      <p><%= link_to "Add New Expense", new_category_expense_path(@category), class: "add-expense" %></p>
   <ul>
     <% @expenses.each do |e| %>
       <li>
@@ -16,7 +17,6 @@
         <%= link_to "Show Details", category_expense_path(@category, e) %>
       </li>
     <% end %>
-      <p><%= link_to "New Expense", new_category_expense_path(@category), class: "add-expense" %></p>
   </ul>  
 
 <p><strong>Total: <%= number_to_currency(@total_spending) %></strong></p>
