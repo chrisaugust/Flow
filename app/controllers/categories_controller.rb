@@ -35,13 +35,6 @@ class CategoriesController < ApplicationController
   end
 
   def show
-
-    # if current_user
-    #   @expenses = @category.expenses.order(date: :desc).filter { |e| e.user == current_user }
-    # else
-    #   @expenses = @category.expenses.order(date: :desc)
-    # end
-
     @expenses = @category.expenses.order(date: :desc)
       .filter { |e| e.user == current_user }
     @total_spending = total(@expenses)
