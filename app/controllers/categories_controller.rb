@@ -6,8 +6,6 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   
   def home 
-    @expenses = Expense.all
-    set_chart_data
     render :home
   end
 
@@ -50,7 +48,7 @@ class CategoriesController < ApplicationController
     @spending_by_date = @expenses.group_by(&:date)
       .transform_values { |expenses| expenses.sum(&:amount) }
 
-    #@chart_data = @spending_by_date
+    @chart_data = @spending_by_date
   end
 
   def new
