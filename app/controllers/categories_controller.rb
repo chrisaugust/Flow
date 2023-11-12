@@ -89,7 +89,7 @@ class CategoriesController < ApplicationController
     end
 
     def set_categories
-      @categories = current_user ? current_user.categories.uniq : Category.all
+      @categories = Category.all
     end
 
     def set_chart_data
